@@ -1,0 +1,10 @@
+<!ENTITY nbsp "&#160;">
+
+<!ELEMENT BGChess ( BGChessCategory+ )>
+
+<!ELEMENT BGChessCategory ( BGChessCategoryName, BGChessCategoryBlock )>
+<!ATTLIST BGChessCategory Prefix CDATA #REQUIRED>
+
+<!ELEMENT BGChessCategoryName ( #PCDATA )>
+
+<!ELEMENT BGChessCategoryBlock EMPTY >

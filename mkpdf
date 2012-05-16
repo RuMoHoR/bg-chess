@@ -1,0 +1,25 @@
+#!/bin/bash
+
+SRCDIR="src"
+OUTDIR="pdf"
+TMPDIR="tmp"
+
+
+mk_pdf() {
+	local	NAME;
+	local	FONAME;
+
+	NAME="$1"
+	SRCNAME="${SRCDIR}/${NAME}.xml"
+	FONAME="${TMPDIR}/${NAME}.fo"
+	OUTNAME="${OUTDIR}/${NAME}.pdf"
+
+	mkdir -p ${TMPDIR}
+	mkdir -p ${OUTDIR}
+
+	fop -xsl BGChess.xsl -xml ${SRCNAME} -foout ${FONAME} &&
+	fop -c ./fop.xconf -fo ${FONAME} -pdf ${OUTNAME}
+}
+
+mk_pdf BGM12KP200
+mk_pdf BGK12
