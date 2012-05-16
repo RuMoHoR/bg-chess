@@ -56,31 +56,27 @@
 
 <!-- document -->
 <xsl:template name="Setup.Pages">
-
 	<fo:layout-master-set>
-
-<!-- Title page -->
 	<fo:simple-page-master
-				master-name	= "chesspage"
-				xsl:use-attribute-sets	= "pagesize">
+			master-name	= "chesspage"
+			xsl:use-attribute-sets	= "pagesize">
 
 		<fo:region-body
 				region-name	= "page-body"
 				display-align	= "center"
 				vertical-align	= "top"
 				margin-bottom	= "{$body.margin.bottom}"
-				margin-top	= "{$body.margin.top}">
-		</fo:region-body>
+				margin-top	= "{$body.margin.top}" />
 
-		<fo:region-before	xsl:use-attribute-sets	= "region.header" />
-		<fo:region-after	xsl:use-attribute-sets	= "region.footer" />
+		<fo:region-before
+				xsl:use-attribute-sets	= "region.header" />
+		<fo:region-after
+				xsl:use-attribute-sets	= "region.footer" />
 
 	</fo:simple-page-master>
 
-<!-- page sequences -->
-
 	<fo:page-sequence-master master-name="chess-sequence">
-		<fo:single-page-master-reference master-reference = "chesspage"/>
+		<fo:repeatable-page-master-reference master-reference = "chesspage"/>
 	</fo:page-sequence-master>
 	</fo:layout-master-set>
 
@@ -100,7 +96,35 @@
 </xsl:template>
 
 <xsl:template match="BGChess">
-	<xsl:apply-templates select="BGChessCategory"/>
+	<fo:page-sequence master-reference="chess-sequence">
+
+	<!--xsl:call-template name="make.footer.even"/>
+	<xsl:call-template name="make.footer.odd"/>
+
+	<xsl:call-template name="make.header.even"/>
+
+				border-top-width	= "{$header.border}"
+				border-top-style	= "solid">
+
+	<xsl:call-template name="make.header.odd"/-->
+
+	<!--fo:static-content flow-name="header">
+	</fo:static-content-->
+
+	<fo:flow flow-name	= "page-body">
+		<!--fo:block	font-family		= "{$header.font.name}"
+				font-size		= "{$header.font.size}"
+				text-align		= "center"
+				padding-top		= "{$header.padding}"
+				border-top-width	= "{$header.border}"
+				border-top-style	= "solid">
+			-
+		</fo:block-->
+		<xsl:apply-templates select="BGChessCategory" />
+	</fo:flow>
+
+	</fo:page-sequence>
+
 </xsl:template>
 
 <xsl:template name="BGChessCategoryBlockItem"
@@ -204,19 +228,23 @@
 	</fo:table-row>
 </xsl:template>
 
-<xsl:template match="BGChessCategoryBlock">
-	<fo:table table-layout="fixed" width="100%" border-collapse="collapse" border="solid black 0pt">
-		<fo:table-column column-width="proportional-column-width(20)"/>
-		<fo:table-column column-width="proportional-column-width(20)"/>
-		<fo:table-column column-width="proportional-column-width(20)"/>
-		<fo:table-column column-width="proportional-column-width(20)"/>
-		<fo:table-column column-width="proportional-column-width(20)"/>
-		<fo:table-column column-width="proportional-column-width(4)"/>
-		<fo:table-column column-width="proportional-column-width(20)"/>
-		<fo:table-column column-width="proportional-column-width(20)"/>
-		<fo:table-column column-width="proportional-column-width(20)"/>
-		<fo:table-column column-width="proportional-column-width(20)"/>
-		<fo:table-column column-width="proportional-column-width(20)"/>
+<xsl:template match="BGChessCategoryBlock"
+	><fo:table
+			table-layout = "fixed"
+			width = "100%"
+			border-collapse = "collapse"
+			border = "solid black 0pt"
+		><fo:table-column column-width="proportional-column-width(20)" />
+		<fo:table-column column-width="proportional-column-width(20)" />
+		<fo:table-column column-width="proportional-column-width(20)" />
+		<fo:table-column column-width="proportional-column-width(20)" />
+		<fo:table-column column-width="proportional-column-width(20)" />
+		<fo:table-column column-width="proportional-column-width(4)" />
+		<fo:table-column column-width="proportional-column-width(20)" />
+		<fo:table-column column-width="proportional-column-width(20)" />
+		<fo:table-column column-width="proportional-column-width(20)" />
+		<fo:table-column column-width="proportional-column-width(20)" />
+		<fo:table-column column-width="proportional-column-width(20)" />
 		<fo:table-body>
 			<xsl:call-template name="BGChessCategoryBlockRow"><xsl:with-param name="row" select="3 * position() - 3"/></xsl:call-template>
 			<xsl:call-template name="BGChessCategoryBlockRow"><xsl:with-param name="row" select="3 * position() - 2"/></xsl:call-template>
@@ -225,65 +253,33 @@
 					margin = "0pt"
 					padding = "0pt"
 					border = "solid yellow 0pt"
-					height="1mm">
+					height="1mm" >
 				<fo:table-cell display-align="center" number-columns-spanned="11">
 					<fo:block text-align="center"><xsl:text>&#xA0;</xsl:text></fo:block>
 				</fo:table-cell>
 			</fo:table-row>
 		</fo:table-body>
-	</fo:table>
-
-</xsl:template>
-
-
-
-
-
+	</fo:table
+></xsl:template>
 
 <!-- document -->
-<xsl:template match="BGChessCategory">
-	<fo:page-sequence master-reference="chess-sequence">
-
-	<!--xsl:call-template name="make.footer.even"/>
-	<xsl:call-template name="make.footer.odd"/>
-
-	<xsl:call-template name="make.header.even"/>
-
-				border-top-width	= "{$header.border}"
-				border-top-style	= "solid">
-
-	<xsl:call-template name="make.header.odd"/-->
-
-	<fo:static-content flow-name="header">
-		<fo:block
-				font-family		= "{$header.font.name}"
-				font-size		= "{$header.font.size}"
-				text-align		= "center"
-				padding-top		= "{$header.padding}"
-				border = "0pt solid green"
-		>
-			<xsl:value-of select="BGChessCategoryName" />
-			<xsl:text>&#xA0;(&#xA0;</xsl:text>
-			<xsl:value-of select="@Prefix" />
-			<xsl:text>.xx&#xA0;)</xsl:text>
-		</fo:block>
-	</fo:static-content>
-
-	<fo:flow flow-name	= "page-body">
-		<!--fo:block	font-family		= "{$header.font.name}"
-				font-size		= "{$header.font.size}"
-				text-align		= "center"
-				padding-top		= "{$header.padding}"
-				border-top-width	= "{$header.border}"
-				border-top-style	= "solid">
-			-
-		</fo:block-->
-		<xsl:apply-templates	select	= "BGChessCategoryBlock"/>
-	</fo:flow>
-
-	</fo:page-sequence>
-
-</xsl:template>
-
+<xsl:template match="BGChessCategory"
+	><fo:block
+			font-family = "{$header.font.name}"
+			font-size = "{$header.font.size}"
+			text-align = "center"
+			padding-top = "{$header.padding}"
+			border = "0pt solid green"
+			keep-with-next = "always"
+		><xsl:value-of select="BGChessCategoryName"
+		/><xsl:text>&#xA0;(&#xA0;</xsl:text
+		><xsl:value-of select="@Prefix"
+		/><xsl:text>.xx&#xA0;)</xsl:text
+	></fo:block
+	><fo:block
+			keep-together.within-page = "always"
+		><xsl:apply-templates select = "BGChessCategoryBlock"
+	/></fo:block
+></xsl:template>
 
 </xsl:stylesheet>

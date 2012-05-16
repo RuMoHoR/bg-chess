@@ -8,20 +8,32 @@
 		<BGChessCategoryBlock />
 	</BGChessCategory>
 
-	<BGChessCategory Prefix="6" >
-		<BGChessCategoryName>Броневик</BGChessCategoryName>
-		<BGChessCategoryBlock />
-		<BGChessCategoryBlock />
-	</BGChessCategory>
-
 	<BGChessCategory Prefix="3" >
 		<BGChessCategoryName>Всадник</BGChessCategoryName>
 		<BGChessCategoryBlock />
 		<BGChessCategoryBlock />
 	</BGChessCategory>
 
+	<BGChessCategory Prefix="6" >
+		<BGChessCategoryName>Броневик</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="7" >
+		<BGChessCategoryName>Сфинкс</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
 	<BGChessCategory Prefix="8" >
 		<BGChessCategoryName>Грифон</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="9" >
+		<BGChessCategoryName>Химера</BGChessCategoryName>
 		<BGChessCategoryBlock />
 		<BGChessCategoryBlock />
 	</BGChessCategory>
@@ -35,18 +47,6 @@
 	<BGChessCategory Prefix="P4" >
 		<BGChessCategoryName>Лев-Про</BGChessCategoryName>
 		<BGChessCategoryBlock />
-		<BGChessCategoryBlock />
-		<BGChessCategoryBlock />
-	</BGChessCategory>
-
-	<BGChessCategory Prefix="7" >
-		<BGChessCategoryName>Сфинкс</BGChessCategoryName>
-		<BGChessCategoryBlock />
-		<BGChessCategoryBlock />
-	</BGChessCategory>
-
-	<BGChessCategory Prefix="9" >
-		<BGChessCategoryName>Химера</BGChessCategoryName>
 		<BGChessCategoryBlock />
 		<BGChessCategoryBlock />
 	</BGChessCategory>
