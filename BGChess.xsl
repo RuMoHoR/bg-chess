@@ -12,24 +12,23 @@
 	<xsl:param name="page.margin.inner"	select="'15mm'"/>
 	<xsl:param name="page.margin.outer"	select="'15mm'"/>
 
-	<xsl:param name="body.margin.top"	select="'10mm'"/>
-	<xsl:param name="body.margin.bottom"	select="'10mm'"/>
+	<xsl:param name="body.margin.top"	select="'8mm'"/>
+	<xsl:param name="body.margin.bottom"	select="'8mm'"/>
 
 	<xsl:param name="body.header.align"	select="'after'"/>
 	<xsl:param name="body.footer.align"	select="'after'"/>
 
-	<xsl:param name="header.font.name"	select="'DejaVuSans'" />
+	<!--xsl:param name="header.font.name"	select="'DejaVuSans'" />
 	<xsl:param name="header.font.size"	select="'18pt'"/>
 	<xsl:param name="header.padding"	select="'3pt'"/>
-	<xsl:param name="header.border"		select="'1pt'"/>
+	<xsl:param name="header.border"		select="'1pt'"/-->
 
-	<xsl:param name="footer.font.name"	select="'DejaVuSans'" />
-	<xsl:param name="footer.font.size"	select="'10pt'"/>
-	<xsl:param name="footer.padding"	select="'3pt'"/>
-	<xsl:param name="footer.border"		select="'1pt'"/>
+	<xsl:param name="category.font.name"	select="'DejaVuSans'" />
+	<xsl:param name="category.font.size"	select="'16pt'"/>
 
 	<xsl:param name="item.font.name"	select="'DejaVuSans'" />
 	<xsl:param name="item.font.size"	select="'8pt'"/>
+	<xsl:param name="split.font.size"	select="'6pt'"/>
 
 
 <xsl:attribute-set	name		= "pagesize">
@@ -63,7 +62,6 @@
 
 		<fo:region-body
 				region-name	= "page-body"
-				display-align	= "center"
 				vertical-align	= "top"
 				margin-bottom	= "{$body.margin.bottom}"
 				margin-top	= "{$body.margin.top}" />
@@ -137,9 +135,9 @@
 			border = "solid red 0pt"
 			display-align = "center"
 		><fo:block
-				border = "solid blue 1pt"
-				margin = "0pt"
-				padding = "1pt 4pt"
+				border = "solid black 0.8pt"
+				margin = "0pt 1pt"
+				padding = "0.8pt 3pt"
 			><fo:block
 					line-height = "1.2"
 					border-bottom = "solid black 0.2pt"
@@ -169,11 +167,10 @@
 	><xsl:param name="row"
 
 	/><fo:table-row
-			keep-with-next = "always"
 			margin = "0pt"
 			padding = "0pt"
 			border = "solid yellow 0pt"
-			height="11mm" >
+			height="10.5mm" >
 
 		<xsl:call-template name="BGChessCategoryBlockItem">
 			<xsl:with-param name="row" select="$row" />
@@ -230,6 +227,7 @@
 
 <xsl:template match="BGChessCategoryBlock"
 	><fo:table
+			margin-bottom = "6pt"
 			table-layout = "fixed"
 			width = "100%"
 			border-collapse = "collapse"
@@ -246,29 +244,40 @@
 		<fo:table-column column-width="proportional-column-width(20)" />
 		<fo:table-column column-width="proportional-column-width(20)" />
 		<fo:table-body>
-			<xsl:call-template name="BGChessCategoryBlockRow"><xsl:with-param name="row" select="3 * position() - 3"/></xsl:call-template>
-			<xsl:call-template name="BGChessCategoryBlockRow"><xsl:with-param name="row" select="3 * position() - 2"/></xsl:call-template>
-			<xsl:call-template name="BGChessCategoryBlockRow"><xsl:with-param name="row" select="3 * position() - 1"/></xsl:call-template>
-			<fo:table-row
+			<xsl:call-template name="BGChessCategoryBlockRow" >
+				<xsl:with-param name="row" select="3 * position() - 3" />
+			</xsl:call-template >
+			<xsl:call-template name="BGChessCategoryBlockRow" >
+				<xsl:with-param name="row" select="3 * position() - 2" />
+			</xsl:call-template >
+			<xsl:call-template name="BGChessCategoryBlockRow" >
+				<xsl:with-param name="row" select="3 * position() - 1" />
+			</xsl:call-template >
+			<!--fo:table-row
 					margin = "0pt"
 					padding = "0pt"
 					border = "solid yellow 0pt"
-					height="1mm" >
-				<fo:table-cell display-align="center" number-columns-spanned="11">
-					<fo:block text-align="center"><xsl:text>&#xA0;</xsl:text></fo:block>
-				</fo:table-cell>
-			</fo:table-row>
+					height="0.6mm" >
+				<fo:table-cell
+						display-align = "center"
+						number-columns-spanned = "11"
+						font-size = "{$split.font.size}"
+					><fo:block
+							text-align = "center"
+						><xsl:text>&#xA0;</xsl:text
+					></fo:block
+				></fo:table-cell>
+			</fo:table-row-->
 		</fo:table-body>
 	</fo:table
 ></xsl:template>
 
-<!-- document -->
 <xsl:template match="BGChessCategory"
 	><fo:block
-			font-family = "{$header.font.name}"
-			font-size = "{$header.font.size}"
+			font-family = "{$category.font.name}"
+			font-size = "{$category.font.size}"
 			text-align = "center"
-			padding-top = "{$header.padding}"
+			padding-top = "0pt"
 			border = "0pt solid green"
 			keep-with-next = "always"
 		><xsl:value-of select="BGChessCategoryName"
