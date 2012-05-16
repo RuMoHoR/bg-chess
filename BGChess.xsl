@@ -18,22 +18,19 @@
 	<xsl:param name="body.header.align"	select="'after'"/>
 	<xsl:param name="body.footer.align"	select="'after'"/>
 
-	<xsl:param name="header.font.name"	select="'Arial'"/>
+	<xsl:param name="header.font.name"	select="'DejaVuSans'" />
 	<xsl:param name="header.font.size"	select="'18pt'"/>
 	<xsl:param name="header.padding"	select="'3pt'"/>
 	<xsl:param name="header.border"		select="'1pt'"/>
 
-	<xsl:param name="footer.font.name"	select="'Arial'"/>
+	<xsl:param name="footer.font.name"	select="'DejaVuSans'" />
 	<xsl:param name="footer.font.size"	select="'10pt'"/>
 	<xsl:param name="footer.padding"	select="'3pt'"/>
 	<xsl:param name="footer.border"		select="'1pt'"/>
 
-	<xsl:param name="item.font.name"	select="'Arial'"/>
+	<xsl:param name="item.font.name"	select="'DejaVuSans'" />
 	<xsl:param name="item.font.size"	select="'8pt'"/>
 
-
-	<xsl:param name="zxz"	select="1"/>
-	<xsl:param name="xzx"	select="2"/>
 
 <xsl:attribute-set	name		= "pagesize">
 	<xsl:attribute name = "page-width">	<xsl:value-of select="$page.width"/></xsl:attribute>
@@ -106,63 +103,105 @@
 	<xsl:apply-templates select="BGChessCategory"/>
 </xsl:template>
 
-<xsl:template name="BGChessCategoryBlockItem">
-	<xsl:param name="num"/>
-	<fo:table-cell
+<xsl:template name="BGChessCategoryBlockItem"
+	><xsl:param name="row"
+	/><xsl:param name="num"
+
+	/><fo:table-cell
 			margin = "0pt"
 			padding = "0pt"
 			border = "solid red 0pt"
-			display-align="center">
-		<fo:block
+			display-align = "center"
+		><fo:block
 				border = "solid blue 1pt"
 				margin = "0pt"
-				padding = "1pt 4pt">
-			<fo:block
-				line-height = "1.2"
+				padding = "1pt 4pt"
+			><fo:block
+					line-height = "1.2"
 					border-bottom = "solid black 0.2pt"
 					margin = "0pt"
 					padding = "0pt"
 					font-family		= "{$item.font.name}"
 					font-size		= "{$item.font.size}"
-					text-align="center">
-						<xsl:value-of select="../@Prefix" />
-						<xsl:value-of select="$num" />
-					</fo:block>
-			<fo:block
-				line-height = "1.5"
+					text-align="center"
+				><xsl:value-of select="../@Prefix"
+				/><xsl:value-of select="$row"
+				/><xsl:value-of select="$num"
+			/></fo:block
+			><fo:block
+					line-height = "1.5"
 					border = "solid blue 0pt"
 					margin = "0pt"
 					padding = "0pt"
 					font-family		= "{$item.font.name}"
 					font-size		= "{$item.font.size}"
-					text-align="center">&#xA0;</fo:block>
-		</fo:block>
-	</fo:table-cell>
-</xsl:template>
+					text-align="center"
+			>&#xA0;</fo:block
+		></fo:block
+	></fo:table-cell
+></xsl:template>
 
-<xsl:template name="BGChessCategoryBlockRow">
-	<xsl:param name="row"/>
-			<fo:table-row
-					keep-with-next	= "always"
-					margin = "0pt"
-					padding = "0pt"
-					border = "solid yellow 0pt"
-					height="11mm">
-				<xsl:call-template name="BGChessCategoryBlockItem"><xsl:with-param name="num" select="10 * $row + 0"/></xsl:call-template>
-				<xsl:call-template name="BGChessCategoryBlockItem"><xsl:with-param name="num" select="10 * $row + 1"/></xsl:call-template>
-				<xsl:call-template name="BGChessCategoryBlockItem"><xsl:with-param name="num" select="10 * $row + 2"/></xsl:call-template>
-				<xsl:call-template name="BGChessCategoryBlockItem"><xsl:with-param name="num" select="10 * $row + 3"/></xsl:call-template>
-				<xsl:call-template name="BGChessCategoryBlockItem"><xsl:with-param name="num" select="10 * $row + 4"/></xsl:call-template>
-				<fo:table-cell display-align="center">
-					<fo:block text-align="center"><xsl:text>&#xA0;</xsl:text></fo:block>
-				</fo:table-cell>
-				<xsl:call-template name="BGChessCategoryBlockItem"><xsl:with-param name="num" select="10 * $row + 5"/></xsl:call-template>
-				<xsl:call-template name="BGChessCategoryBlockItem"><xsl:with-param name="num" select="10 * $row + 6"/></xsl:call-template>
-				<xsl:call-template name="BGChessCategoryBlockItem"><xsl:with-param name="num" select="10 * $row + 7"/></xsl:call-template>
-				<xsl:call-template name="BGChessCategoryBlockItem"><xsl:with-param name="num" select="10 * $row + 8"/></xsl:call-template>
-				<xsl:call-template name="BGChessCategoryBlockItem"><xsl:with-param name="num" select="10 * $row + 9"/></xsl:call-template>
+<xsl:template name="BGChessCategoryBlockRow"
+	><xsl:param name="row"
 
-			</fo:table-row>
+	/><fo:table-row
+			keep-with-next = "always"
+			margin = "0pt"
+			padding = "0pt"
+			border = "solid yellow 0pt"
+			height="11mm" >
+
+		<xsl:call-template name="BGChessCategoryBlockItem">
+			<xsl:with-param name="row" select="$row" />
+			<xsl:with-param name="num" select="0" />
+		</xsl:call-template>
+		<xsl:call-template name="BGChessCategoryBlockItem">
+			<xsl:with-param name="row" select="$row" />
+			<xsl:with-param name="num" select="1" />
+		</xsl:call-template>
+		<xsl:call-template name="BGChessCategoryBlockItem">
+			<xsl:with-param name="row" select="$row" />
+			<xsl:with-param name="num" select="2" />
+		</xsl:call-template>
+		<xsl:call-template name="BGChessCategoryBlockItem">
+			<xsl:with-param name="row" select="$row" />
+			<xsl:with-param name="num" select="3" />
+		</xsl:call-template>
+		<xsl:call-template name="BGChessCategoryBlockItem">
+			<xsl:with-param name="row" select="$row" />
+			<xsl:with-param name="num" select="4" />
+		</xsl:call-template>
+
+		<fo:table-cell
+				display-align = "center"
+			><fo:block
+					text-align = "center"
+				><xsl:text>&#xA0;</xsl:text
+			></fo:block
+		></fo:table-cell>
+
+		<xsl:call-template name="BGChessCategoryBlockItem">
+			<xsl:with-param name="row" select="$row" />
+			<xsl:with-param name="num" select="5" />
+		</xsl:call-template>
+		<xsl:call-template name="BGChessCategoryBlockItem">
+			<xsl:with-param name="row" select="$row" />
+			<xsl:with-param name="num" select="6" />
+		</xsl:call-template>
+		<xsl:call-template name="BGChessCategoryBlockItem">
+			<xsl:with-param name="row" select="$row" />
+			<xsl:with-param name="num" select="7" />
+		</xsl:call-template>
+		<xsl:call-template name="BGChessCategoryBlockItem">
+			<xsl:with-param name="row" select="$row" />
+			<xsl:with-param name="num" select="8" />
+		</xsl:call-template>
+		<xsl:call-template name="BGChessCategoryBlockItem">
+			<xsl:with-param name="row" select="$row" />
+			<xsl:with-param name="num" select="9" />
+		</xsl:call-template>
+
+	</fo:table-row>
 </xsl:template>
 
 <xsl:template match="BGChessCategoryBlock">

@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<!--
+	Licensed to the Apache Software Foundation (ASF) under one or more
+	contributor license agreements.  See the NOTICE file distributed with
+	this work for additional information regarding copyright ownership.
+	The ASF licenses this file to You under the Apache License, Version 2.0
+	(the "License"); you may not use this file except in compliance with
+	the License.  You may obtain a copy of the License at
+
+		 http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<!-- $Id: fop.xconf 447325 2006-09-18 08:55:33Z jeremias $ -->
+
+<!--
+
+This is an example configuration file for FOP.
+This file contains the same settings as the default values
+and will have no effect if used unchanged.
+
+Relative config url's will be resolved relative to
+the location of this file.
+
+-->
+
+<!-- NOTE: This is the version of the configuration -->
+<fop version="1.0">
+
+	<!-- Base URL for resolving relative URLs -->
+	<base>.</base>
+
+	<font-base>./fonts</font-base>
+
+	<!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi -->
+	<source-resolution>72</source-resolution>
+	<!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi -->
+	<target-resolution>72</target-resolution>
+
+	<!-- Default page-height and page-width, in case
+		 value is specified as auto -->
+	<default-page-settings height="279mm" width="210mm"/>
+
+	<!-- Information for specific renderers -->
+	<!-- Uses renderer mime type for renderers -->
+	<renderers>
+		<renderer mime="application/pdf">
+			<filterList>
+		<!-- provides compression using zlib flate (default is on) -->
+				<value>flate</value>
+
+		<!-- encodes binary data into printable ascii characters (default off)
+			 This provides about a 4:5 expansion of data size -->
+		<!-- <value>ascii-85</value> -->
+
+		<!-- encodes binary data with hex representation (default off)
+			 This filter is not recommended as it doubles the data size -->
+		<!-- <value>ascii-hex</value> -->
+			</filterList>
+
+			<fonts>
+		<!-- embedded fonts -->
+		<!--
+		This information must exactly match the font specified
+		in the fo file. Otherwise it will use a default font.
+
+		For example,
+		<fo:inline font-family="Arial" font-weight="bold" font-style="normal">
+			Arial-normal-normal font
+		</fo:inline>
+		for the font triplet specified by:
+		<font-triplet name="Arial" style="normal" weight="bold"/>
+
+		If you do not want to embed the font in the pdf document
+		then do not include the "embed-url" attribute.
+		The font will be needed where the document is viewed
+		for it to be displayed properly.
+
+		possible styles: normal | italic | oblique | backslant
+		possible weights: normal | bold | 100 | 200 | 300 | 400
+							| 500 | 600 | 700 | 800 | 900
+		(normal = 400, bold = 700)
+		-->
+
+				<!--font metrics-url="Arial/Arial.xml" kerning="yes" embed-url="Arial/Arial.ttf">
+					<font-triplet name="Arial" style="normal" weight="normal"/>
+				</font>
+				<font metrics-url="Arial/ArialB.xml" kerning="yes" embed-url="Arial/ArialBD.ttf">
+					<font-triplet name="Arial" style="normal" weight="bold"/>
+				</font>
+				<font metrics-url="Arial/ArialI.xml" kerning="yes" embed-url="Arial/ArialI.ttf">
+					<font-triplet name="Arial" style="italic" weight="normal"/>
+				</font>
+				<font metrics-url="Arial/ArialBI.xml" kerning="yes" embed-url="Arial/ArialBI.ttf">
+					<font-triplet name="Arial" style="italic" weight="bold"/>
+				</font>
+
+				<font metrics-url="Arial/ArialUni.xml" kerning="yes" embed-url="Arial/ArialUni.ttf">
+					<font-triplet name="ArialUni" style="normal" weight="normal"/>
+				</font-->
+
+				<!--font metrics-url="GOST_A_.xml" kerning="yes" embed-url="GOST_A_.ttf">
+					<font-triplet name="GOST" style="normal" weight="normal"/>
+				</font>
+				<font metrics-url="GOST_B_.xml" kerning="yes" embed-url="GOST_B_.ttf">
+					<font-triplet name="GOST" style="normal" weight="bold"/>
+				</font>
+				<font metrics-url="GOST_A_.xml" kerning="yes" embed-url="GOST_A_.ttf">
+					<font-triplet name="GOST" style="italic" weight="normal"/>
+				</font>
+				<font metrics-url="GOST_B_.xml" kerning="yes" embed-url="GOST_B_.ttf">
+					<font-triplet name="GOST" style="italic" weight="bold"/>
+				</font>
+
+				<font metrics-url="Times.xml" kerning="yes" embed-url="Times.ttf">
+					<font-triplet name="Times" style="normal" weight="normal"/>
+				</font>
+				<font metrics-url="TimesB.xml" kerning="yes" embed-url="TimesBD.ttf">
+					<font-triplet name="Times" style="normal" weight="bold"/>
+				</font>
+				<font metrics-url="TimesI.xml" kerning="yes" embed-url="TimesI.ttf">
+					<font-triplet name="Times" style="italic" weight="normal"/>
+				</font>
+				<font metrics-url="TimesBI.xml" kerning="yes" embed-url="TimesBI.ttf">
+					<font-triplet name="Times" style="italic" weight="bold"/>
+				</font-->
+
+				<!--font metrics-url="Libertine/Libertine-Re.xml" kerning="yes" embed-url="Libertine/LinLibertine_Re.ttf">
+					<font-triplet name="Libertine" style="normal" weight="normal"/>
+				</font>
+				<font metrics-url="Libertine/Libertine-Bd.xml" kerning="yes" embed-url="Libertine/LinLibertine_Bd.ttf">
+					<font-triplet name="Libertine" style="normal" weight="bold"/>
+				</font>
+				<font metrics-url="Libertine/Libertine-It.xml" kerning="yes" embed-url="Libertine/LinLibertine_It.ttf">
+					<font-triplet name="Libertine" style="italic" weight="normal"/>
+				</font>
+				<font metrics-url="Libertine/Libertine-BI.xml" kerning="yes" embed-url="Libertine/LinLibertine_BI.ttf">
+					<font-triplet name="Libertine" style="italic" weight="bold"/>
+				</font-->
+
+				<!--font metrics-url="Libertine/Biolinum-Re.xml" kerning="yes" embed-url="Libertine/Biolinum_Re-0.4.1RO.ttf">
+					<font-triplet name="Biolinum" style="normal" weight="normal"/>
+				</font>
+				<font metrics-url="Libertine/Biolinum-Bd.xml" kerning="yes" embed-url="Libertine/Biolinum_Bd-0.4.1RO.ttf">
+					<font-triplet name="Biolinum" style="normal" weight="bold"/>
+				</font-->
+
+				<font metrics-url="DejaVu/DejaVuSans-Re.xml" kerning="yes" embed-url="DejaVu/DejaVuSans.ttf">
+					<font-triplet name="DejaVuSans" style="normal" weight="normal"/>
+				</font>
+				<!--font metrics-url="DejaVu/DejaVuSans-Bd.xml" kerning="yes" embed-url="DejaVu/DejaVuSans-Bold.ttf">
+					<font-triplet name="DejaVuSans" style="normal" weight="bold"/>
+				</font-->
+
+				<!--font metrics-url="Droid/DroidSerif-Re.xml" kerning="yes" embed-url="Droid/DroidSerif-Regular.ttf">
+					<font-triplet name="DroidSerif" style="normal" weight="normal"/>
+				</font>
+				<font metrics-url="Droid/DroidSerif-Bd.xml" kerning="yes" embed-url="Droid/DroidSerif-Bold.ttf">
+					<font-triplet name="DroidSerif" style="normal" weight="bold"/>
+				</font>
+				<font metrics-url="Droid/DroidSerif-It.xml" kerning="yes" embed-url="Droid/DroidSerif-Italic.ttf">
+					<font-triplet name="DroidSerif" style="italic" weight="normal"/>
+				</font>
+				<font metrics-url="Droid/DroidSerif-BI.xml" kerning="yes" embed-url="Droid/DroidSerif-BoldItalic.ttf">
+					<font-triplet name="DroidSerif" style="italic" weight="bold"/>
+				</font-->
+
+				<!--font metrics-url="Droid/DroidSans-Re.xml" kerning="yes" embed-url="Droid/DroidSans.ttf">
+					<font-triplet name="DroidSans" style="normal" weight="normal"/>
+				</font>
+				<font metrics-url="Droid/DroidSans-Bd.xml" kerning="yes" embed-url="Droid/DroidSans-Bold.ttf">
+					<font-triplet name="DroidSans" style="normal" weight="bold"/>
+				</font-->
+
+			</fonts>
+
+		<!-- This option lets you specify additional options on an XML handler -->
+		<!--xml-handler namespace="http://www.w3.org/2000/svg">
+<stroke-text>false</stroke-text>
+		</xml-handler-->
+
+		</renderer>
+
+		<renderer mime="application/postscript">
+		<!-- This option forces the PS renderer to rotate landscape pages -->
+		<!--auto-rotate-landscape>true</auto-rotate-landscape-->
+
+		<!-- This option lets you specify additional options on an XML handler -->
+		<!--xml-handler namespace="http://www.w3.org/2000/svg">
+<stroke-text>false</stroke-text>
+		</xml-handler--></renderer>
+
+		<renderer mime="application/vnd.hp-PCL"></renderer>
+
+	<!-- MIF does not have a renderer
+	<renderer mime="application/vnd.mif">
+	</renderer>
+	-->
+
+		<renderer mime="image/svg+xml">
+			<format type="paginated"/>
+			<link value="true"/>
+			<strokeText value="false"/>
+		</renderer>
+
+		<renderer mime="application/awt"></renderer>
+
+		<renderer mime="image/png">
+		<!--transparent-page-background>true</transparent-page-background--></renderer>
+
+		<renderer mime="image/tiff">
+		<!--transparent-page-background>true</transparent-page-background-->
+		<!--compression>CCITT T.6</compression--></renderer>
+
+		<renderer mime="text/xml"></renderer>
+
+	<!-- RTF does not have a renderer
+	<renderer mime="text/rtf">
+	</renderer>
+	-->
+
+		<renderer mime="text/plain">
+			<pageSize columns="80"/>
+		</renderer>
+
+	</renderers>
+
+</fop>
+

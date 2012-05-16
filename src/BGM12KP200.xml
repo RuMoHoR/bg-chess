@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE BGChess SYSTEM "BGChess.dtd">
+<!DOCTYPE BGChess SYSTEM "../BGChess.dtd">
 <BGChess>
 	<BGChessCategory Prefix="1" >
 		<BGChessCategoryName>Ангел</BGChessCategoryName>
