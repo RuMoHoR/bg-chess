@@ -21,5 +21,6 @@ mk_pdf() {
 	fop -c ./fop.xconf -fo ${FONAME} -pdf ${OUTNAME}
 }
 
-mk_pdf BGM12KP200
-mk_pdf BGK12
+#mk_pdf BGM12KP200
+#mk_pdf BGK12
+mk_pdf BG12Zhuk
