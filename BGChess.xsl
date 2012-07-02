@@ -12,16 +12,14 @@
 	<xsl:param name="page.margin.inner"	select="'15mm'"/>
 	<xsl:param name="page.margin.outer"	select="'15mm'"/>
 
-	<xsl:param name="body.margin.top"	select="'8mm'"/>
+	<xsl:param name="body.margin.top"	select="'20pt'"/>
 	<xsl:param name="body.margin.bottom"	select="'8mm'"/>
 
 	<xsl:param name="body.header.align"	select="'after'"/>
 	<xsl:param name="body.footer.align"	select="'after'"/>
 
-	<!--xsl:param name="header.font.name"	select="'DejaVuSans'" />
-	<xsl:param name="header.font.size"	select="'18pt'"/>
-	<xsl:param name="header.padding"	select="'3pt'"/>
-	<xsl:param name="header.border"		select="'1pt'"/-->
+	<xsl:param name="header.font.name"	select="'DejaVuSans'" />
+	<xsl:param name="header.font.size"	select="'16pt'"/>
 
 	<xsl:param name="category.font.name"	select="'DejaVuSans'" />
 	<xsl:param name="category.font.size"	select="'16pt'"/>
@@ -106,8 +104,13 @@
 
 	<xsl:call-template name="make.header.odd"/-->
 
-	<!--fo:static-content flow-name="header">
-	</fo:static-content-->
+	<fo:static-content flow-name="header"
+		><fo:block
+				font-family		= "{$header.font.name}"
+				font-size		= "{$header.font.size}"
+				text-align		= "left"
+		>КП ____</fo:block
+	></fo:static-content>
 
 	<fo:flow flow-name	= "page-body">
 		<!--fo:block	font-family		= "{$header.font.name}"
