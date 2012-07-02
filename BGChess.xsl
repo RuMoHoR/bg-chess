@@ -289,6 +289,7 @@
 		/><xsl:text>.xx&#xA0;)</xsl:text
 	></fo:block
 	><fo:block
+			margin-bottom = "18pt"
 			keep-together.within-page = "always"
 		><xsl:apply-templates select = "BGChessCategoryBlock"
 	/></fo:block
