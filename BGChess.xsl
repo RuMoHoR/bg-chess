@@ -226,6 +226,27 @@
 	></fo:table-cell
 ></xsl:template>
 
+<xsl:template name="BGChessCategoryBlockRowSplit"
+	><fo:table-row
+			margin = "0pt"
+			padding = "0pt"
+			border = "solid yellow 0pt"
+			height="1pt" >
+		<fo:table-cell
+				margin = "0pt"
+				padding = "0pt"
+				display-align = "center"
+				number-columns-spanned = "11"
+				font-size = "{$split.font.size}"
+			><fo:block
+					font-size = "1pt"
+					text-align = "center"
+				><xsl:text>&#xA0;</xsl:text
+			></fo:block
+		></fo:table-cell>
+	</fo:table-row
+></xsl:template>
+
 <xsl:template name="BGChessCategoryBlockRow"
 	><xsl:param name="row"
 
@@ -290,7 +311,7 @@
 
 <xsl:template match="BGChessCategoryBlock"
 	><fo:table
-			margin-bottom = "6pt"
+			margin-bottom = "9pt"
 			table-layout = "fixed"
 			width = "100%"
 			border-collapse = "collapse"
@@ -310,27 +331,14 @@
 			<xsl:call-template name="BGChessCategoryBlockRow" >
 				<xsl:with-param name="row" select="3 * position() - 3" />
 			</xsl:call-template >
+			<xsl:call-template name="BGChessCategoryBlockRowSplit" />
 			<xsl:call-template name="BGChessCategoryBlockRow" >
 				<xsl:with-param name="row" select="3 * position() - 2" />
 			</xsl:call-template >
+			<xsl:call-template name="BGChessCategoryBlockRowSplit" />
 			<xsl:call-template name="BGChessCategoryBlockRow" >
 				<xsl:with-param name="row" select="3 * position() - 1" />
 			</xsl:call-template >
-			<!--fo:table-row
-					margin = "0pt"
-					padding = "0pt"
-					border = "solid yellow 0pt"
-					height="0.6mm" >
-				<fo:table-cell
-						display-align = "center"
-						number-columns-spanned = "11"
-						font-size = "{$split.font.size}"
-					><fo:block
-							text-align = "center"
-						><xsl:text>&#xA0;</xsl:text
-					></fo:block
-				></fo:table-cell>
-			</fo:table-row-->
 		</fo:table-body>
 	</fo:table
 ></xsl:template>
@@ -341,7 +349,7 @@
 			font-size = "{$category.font.size}"
 			text-align = "center"
 			padding-top = "0pt"
-			margin-top = "18pt"
+			margin-top = "24pt"
 			border = "0pt solid green"
 			keep-with-next = "always"
 		><xsl:value-of select="BGChessCategoryName"
@@ -350,8 +358,8 @@
 		/><xsl:text>.xx&#xA0;)</xsl:text
 	></fo:block
 	><fo:block
-			margin-top = "18pt"
-			margin-bottom = "18pt"
+			margin-top = "12pt"
+			margin-bottom = "12pt"
 			keep-together.within-page = "always"
 		><xsl:if test="../@paginate='yes'"
 			><xsl:attribute name="break-after">page</xsl:attribute
