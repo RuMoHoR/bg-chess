@@ -4,6 +4,8 @@
 	xmlns:fo	= "http://www.w3.org/1999/XSL/Format"
 	xmlns:fox	= "http://xml.apache.org/fop/extensions">
 
+	<xsl:param name="bg.label" />
+
 	<xsl:param name="page.width"		select="'210mm'"/>
 	<xsl:param name="page.height"		select="'297mm'"/>
 
@@ -21,11 +23,14 @@
 	<xsl:param name="header.font.name"	select="'DejaVuSans'" />
 	<xsl:param name="header.font.size"	select="'16pt'"/>
 
+	<xsl:param name="footer.font.name"	select="'DejaVuSans'" />
+	<xsl:param name="footer.font.size"	select="'10pt'"/>
+
 	<xsl:param name="category.font.name"	select="'DejaVuSans'" />
-	<xsl:param name="category.font.size"	select="'16pt'"/>
+	<xsl:param name="category.font.size"	select="'18pt'"/>
 
 	<xsl:param name="item.font.name"	select="'DejaVuSans'" />
-	<xsl:param name="item.font.size"	select="'8pt'"/>
+	<xsl:param name="item.font.size"	select="'10pt'"/>
 	<xsl:param name="split.font.size"	select="'6pt'"/>
 
 
@@ -112,6 +117,25 @@
 	></fo:inline
 ></xsl:template>
 
+<xsl:template name="BGChessFooter"
+	><fo:inline
+		><xsl:choose>
+			<xsl:when test="$bg.label"
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:value-of select="$bg.label"
+				/><xsl:text>&#xA0;</xsl:text
+			></xsl:when>
+			<xsl:otherwise
+				><xsl:text>Бегущий Город</xsl:text
+			></xsl:otherwise>
+		</xsl:choose
+	></fo:inline
+	><fo:leader
+	/><!--КП xsl:call-template name="BGChessKPName"
+	--><fo:inline
+		>http://www.runcity.org/ru/</fo:inline
+></xsl:template>
+
 <xsl:template match="BGChess">
 	<fo:page-sequence master-reference="chess-sequence">
 
@@ -125,12 +149,26 @@
 
 	<xsl:call-template name="make.header.odd"/-->
 
-	<fo:static-content flow-name="header"
+	<fo:static-content
+			flow-name="header"
 		><fo:block
 				font-family		= "{$header.font.name}"
 				font-size		= "{$header.font.size}"
 				text-align		= "left"
 		>КП <xsl:call-template name="BGChessKPName"
+		/></fo:block
+	></fo:static-content>
+
+	<fo:static-content
+			flow-name="footer"
+		><fo:block
+				font-family	= "{$footer.font.name}"
+				font-size	= "{$footer.font.size}"
+				border-top	= "1pt solid black"
+				padding-top	= "3pt"
+				text-align	= "justify"
+				text-align-last	= "justify"
+		><xsl:call-template name="BGChessFooter"
 		/></fo:block
 	></fo:static-content>
 
