@@ -8,12 +8,14 @@ TMPDIR="tmp"
 mk_pdf() {
 	local	DIR;
 	local	NAME;
+	local	LABEL;
 	local	SRCNAME;
 	local	FONAME;
 	local	OUTNAME;
 
 	DIR="$1"
 	NAME="$2"
+	LABEL="$3"
 
 	SRCNAME="${SRCDIR}/${DIR}/${NAME}.xml"
 	FONAME="${TMPDIR}/${DIR}-${NAME}.fo"
@@ -23,7 +25,7 @@ mk_pdf() {
 	mkdir -p ${OUTDIR}
 
 	if [ -f ${SRCNAME} ] ; then
-		fop -xsl BGChess.xsl -xml ${SRCNAME} -foout ${FONAME} &&
+		fop -xsl BGChess.xsl -param bg.label "${LABEL}" -xml ${SRCNAME} -foout ${FONAME} &&
 		fop -c ./fop.xconf -fo ${FONAME} -pdf ${OUTNAME}
 	else
 		echo "Src file '${SRCNAME}' not found!"
@@ -33,11 +35,13 @@ mk_pdf() {
 #mk_pdf BGM12KP200
 #mk_pdf BGK12
 
+BG12ZH="«Бегущий Город Жуковский - Раменское 2о12» — 7 июля 2о12 года"
+
 for i in 10 30 70 80 90 xx ; do
-	mk_pdf BG12Zhuk KP${i}-split
-	mk_pdf BG12Zhuk KP${i}-unite
+	mk_pdf BG12Zhuk KP${i}-split "${BG12ZH}"
+	mk_pdf BG12Zhuk KP${i}-unite "${BG12ZH}"
 done
 
 for i in 510 520 ; do
-	mk_pdf BG12Zhuk KP${i}
+	mk_pdf BG12Zhuk KP${i} "${BG12ZH}"
 done
