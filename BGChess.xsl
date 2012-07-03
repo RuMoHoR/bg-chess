@@ -91,6 +91,27 @@
 	</fo:root>
 </xsl:template>
 
+<xsl:template name="BGChessKPName"
+	><fo:inline
+			text-decoration = "underline"
+		><xsl:choose>
+			<xsl:when test="@KP"
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:value-of select="@KP"
+				/><xsl:text>&#xA0;</xsl:text
+			></xsl:when>
+			<xsl:otherwise
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:text>&#xA0;</xsl:text
+			></xsl:otherwise>
+		</xsl:choose
+	></fo:inline
+></xsl:template>
+
 <xsl:template match="BGChess">
 	<fo:page-sequence master-reference="chess-sequence">
 
@@ -109,7 +130,8 @@
 				font-family		= "{$header.font.name}"
 				font-size		= "{$header.font.size}"
 				text-align		= "left"
-		>КП ____</fo:block
+		>КП <xsl:call-template name="BGChessKPName"
+		/></fo:block
 	></fo:static-content>
 
 	<fo:flow flow-name	= "page-body">
