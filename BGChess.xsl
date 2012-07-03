@@ -12,7 +12,7 @@
 	<xsl:param name="page.margin.inner"	select="'15mm'"/>
 	<xsl:param name="page.margin.outer"	select="'15mm'"/>
 
-	<xsl:param name="body.margin.top"	select="'20pt'"/>
+	<xsl:param name="body.margin.top"	select="'10mm'"/>
 	<xsl:param name="body.margin.bottom"	select="'8mm'"/>
 
 	<xsl:param name="body.header.align"	select="'after'"/>
@@ -303,6 +303,7 @@
 			font-size = "{$category.font.size}"
 			text-align = "center"
 			padding-top = "0pt"
+			margin-top = "18pt"
 			border = "0pt solid green"
 			keep-with-next = "always"
 		><xsl:value-of select="BGChessCategoryName"
@@ -311,8 +312,12 @@
 		/><xsl:text>.xx&#xA0;)</xsl:text
 	></fo:block
 	><fo:block
+			margin-top = "18pt"
 			margin-bottom = "18pt"
 			keep-together.within-page = "always"
+		><xsl:if test="../@paginate='yes'"
+			><xsl:attribute name="break-after">page</xsl:attribute
+		></xsl:if
 		><xsl:apply-templates select = "BGChessCategoryBlock"
 	/></fo:block
 ></xsl:template>
