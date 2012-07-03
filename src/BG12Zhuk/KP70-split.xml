@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE BGChess SYSTEM "../../BGChess.dtd">
+<BGChess KP="70" paginate="yes">
+
+	<BGChessCategory Prefix="6" >
+		<BGChessCategoryName>Броневик</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="3" >
+		<BGChessCategoryName>Всадник</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+</BGChess>

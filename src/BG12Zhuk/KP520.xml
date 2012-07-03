@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE BGChess SYSTEM "../../BGChess.dtd">
+<BGChess KP="520" paginate="no">
+
+	<BGChessCategory Prefix="7" >
+		<BGChessCategoryName>Сфинкс</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+</BGChess>

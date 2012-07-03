@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE BGChess SYSTEM "../../BGChess.dtd">
+<BGChess KP="10" paginate="no">
+
+	<BGChessCategory Prefix="L4" >
+		<BGChessCategoryName>Лев-Лайт</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="8" >
+		<BGChessCategoryName>Грифон</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="P4" >
+		<BGChessCategoryName>Лев-Про</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="6" >
+		<BGChessCategoryName>Броневик</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="3" >
+		<BGChessCategoryName>Всадник</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="1" >
+		<BGChessCategoryName>Ангел</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+</BGChess>
