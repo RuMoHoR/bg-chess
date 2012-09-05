@@ -349,7 +349,7 @@
 			font-size = "{$category.font.size}"
 			text-align = "center"
 			padding-top = "0pt"
-			margin-top = "24pt"
+			margin-top = "18pt"
 			border = "0pt solid green"
 			keep-with-next = "always"
 		><xsl:value-of select="BGChessCategoryName"

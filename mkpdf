@@ -35,13 +35,17 @@ mk_pdf() {
 #mk_pdf BGM12KP200
 #mk_pdf BGK12
 
-BG12ZH="«Бегущий Город Жуковский - Раменское 2о12» — 7 июля 2о12 года"
+#BG12ZH="«Бегущий Город Жуковский - Раменское 2о12» — 7 июля 2о12 года"
+BG12VN="«Бегущий Город Великий Новгород 2о12» — 8 сентября 2о12 года"
 
-for i in 10 30 70 80 90 xx ; do
-	mk_pdf BG12Zhuk KP${i}-split "${BG12ZH}"
-	mk_pdf BG12Zhuk KP${i}-unite "${BG12ZH}"
-done
+#for i in 10 30 70 80 90 xx ; do
+#	mk_pdf BG12Zhuk KP${i}-split "${BG12ZH}"
+#	mk_pdf BG12Zhuk KP${i}-unite "${BG12ZH}"
+#done
+#
+#for i in 510 520 ; do
+#	mk_pdf BG12Zhuk KP${i} "${BG12ZH}"
+#done
 
-for i in 510 520 ; do
-	mk_pdf BG12Zhuk KP${i} "${BG12ZH}"
-done
+mk_pdf BG12Novg KPxx-split "${BG12VN}"
+mk_pdf BG12Novg KPxx-unite "${BG12VN}"
