@@ -4,6 +4,8 @@
 	xmlns:fo	= "http://www.w3.org/1999/XSL/Format"
 	xmlns:fox	= "http://xml.apache.org/fop/extensions">
 
+	<xsl:param name="bg.label" />
+
 	<xsl:param name="page.width"		select="'210mm'"/>
 	<xsl:param name="page.height"		select="'297mm'"/>
 
@@ -12,7 +14,7 @@
 	<xsl:param name="page.margin.inner"	select="'15mm'"/>
 	<xsl:param name="page.margin.outer"	select="'15mm'"/>
 
-	<xsl:param name="body.margin.top"	select="'20pt'"/>
+	<xsl:param name="body.margin.top"	select="'10mm'"/>
 	<xsl:param name="body.margin.bottom"	select="'8mm'"/>
 
 	<xsl:param name="body.header.align"	select="'after'"/>
@@ -21,12 +23,15 @@
 	<xsl:param name="header.font.name"	select="'DejaVuSans'" />
 	<xsl:param name="header.font.size"	select="'16pt'"/>
 
+	<xsl:param name="footer.font.name"	select="'DejaVuSans'" />
+	<xsl:param name="footer.font.size"	select="'10pt'"/>
+
 	<xsl:param name="category.font.name"	select="'DejaVuSans'" />
-	<xsl:param name="category.font.size"	select="'16pt'"/>
+	<xsl:param name="category.font.size"	select="'14pt'"/>
 
 	<xsl:param name="item.font.name"	select="'DejaVuSans'" />
-	<xsl:param name="item.font.size"	select="'8pt'"/>
-	<xsl:param name="split.font.size"	select="'6pt'"/>
+	<xsl:param name="item.font.size"	select="'9.5pt'"/>
+	<xsl:param name="split.font.size"	select="'5pt'"/>
 
 
 <xsl:attribute-set	name		= "pagesize">
@@ -91,6 +96,46 @@
 	</fo:root>
 </xsl:template>
 
+<xsl:template name="BGChessKPName"
+	><fo:inline
+			text-decoration = "underline"
+		><xsl:choose>
+			<xsl:when test="@KP"
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:value-of select="@KP"
+				/><xsl:text>&#xA0;</xsl:text
+			></xsl:when>
+			<xsl:otherwise
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:text>&#xA0;</xsl:text
+			></xsl:otherwise>
+		</xsl:choose
+	></fo:inline
+></xsl:template>
+
+<xsl:template name="BGChessFooter"
+	><fo:inline
+		><xsl:choose>
+			<xsl:when test="$bg.label"
+				><xsl:text>&#xA0;</xsl:text
+				><xsl:value-of select="$bg.label"
+				/><xsl:text>&#xA0;</xsl:text
+			></xsl:when>
+			<xsl:otherwise
+				><xsl:text>Бегущий Город</xsl:text
+			></xsl:otherwise>
+		</xsl:choose
+	></fo:inline
+	><fo:leader
+	/><!--КП xsl:call-template name="BGChessKPName"
+	--><fo:inline
+		>http://www.runcity.org/ru/</fo:inline
+></xsl:template>
+
 <xsl:template match="BGChess">
 	<fo:page-sequence master-reference="chess-sequence">
 
@@ -104,12 +149,27 @@
 
 	<xsl:call-template name="make.header.odd"/-->
 
-	<fo:static-content flow-name="header"
+	<fo:static-content
+			flow-name="header"
 		><fo:block
 				font-family		= "{$header.font.name}"
 				font-size		= "{$header.font.size}"
 				text-align		= "left"
-		>КП ____</fo:block
+		>КП <xsl:call-template name="BGChessKPName"
+		/></fo:block
+	></fo:static-content>
+
+	<fo:static-content
+			flow-name="footer"
+		><fo:block
+				font-family	= "{$footer.font.name}"
+				font-size	= "{$footer.font.size}"
+				border-top	= "1pt solid black"
+				padding-top	= "3pt"
+				text-align	= "justify"
+				text-align-last	= "justify"
+		><xsl:call-template name="BGChessFooter"
+		/></fo:block
 	></fo:static-content>
 
 	<fo:flow flow-name	= "page-body">
@@ -164,6 +224,27 @@
 			>&#xA0;</fo:block
 		></fo:block
 	></fo:table-cell
+></xsl:template>
+
+<xsl:template name="BGChessCategoryBlockRowSplit"
+	><fo:table-row
+			margin = "0pt"
+			padding = "0pt"
+			border = "solid yellow 0pt"
+			height="1pt" >
+		<fo:table-cell
+				margin = "0pt"
+				padding = "0pt"
+				display-align = "center"
+				number-columns-spanned = "11"
+				font-size = "{$split.font.size}"
+			><fo:block
+					font-size = "1pt"
+					text-align = "center"
+				><xsl:text>&#xA0;</xsl:text
+			></fo:block
+		></fo:table-cell>
+	</fo:table-row
 ></xsl:template>
 
 <xsl:template name="BGChessCategoryBlockRow"
@@ -228,13 +309,32 @@
 	</fo:table-row>
 </xsl:template>
 
+<xsl:template match="BGChessCategoryBreak"
+	><fo:block
+			page-break-before="always"
+			font-family = "{$category.font.name}"
+			font-size = "{$category.font.size}"
+			text-align = "center"
+			padding-top = "0pt"
+			margin-top = "18pt"
+			margin-bottom = "12pt"
+			border = "0pt solid green"
+			keep-with-next = "always"
+		><xsl:value-of select="../BGChessCategoryName"
+		/><xsl:text>&#xA0;(&#xA0;</xsl:text
+		><xsl:value-of select="../@Prefix"
+		/><xsl:text>.xx&#xA0;)</xsl:text
+	></fo:block
+></xsl:template>
+
 <xsl:template match="BGChessCategoryBlock"
 	><fo:table
-			margin-bottom = "6pt"
+			margin-bottom = "10pt"
 			table-layout = "fixed"
 			width = "100%"
 			border-collapse = "collapse"
 			border = "solid black 0pt"
+			keep-together.within-page = "always"
 		><fo:table-column column-width="proportional-column-width(20)" />
 		<fo:table-column column-width="proportional-column-width(20)" />
 		<fo:table-column column-width="proportional-column-width(20)" />
@@ -250,27 +350,14 @@
 			<xsl:call-template name="BGChessCategoryBlockRow" >
 				<xsl:with-param name="row" select="3 * position() - 3" />
 			</xsl:call-template >
+			<xsl:call-template name="BGChessCategoryBlockRowSplit" />
 			<xsl:call-template name="BGChessCategoryBlockRow" >
 				<xsl:with-param name="row" select="3 * position() - 2" />
 			</xsl:call-template >
+			<xsl:call-template name="BGChessCategoryBlockRowSplit" />
 			<xsl:call-template name="BGChessCategoryBlockRow" >
 				<xsl:with-param name="row" select="3 * position() - 1" />
 			</xsl:call-template >
-			<!--fo:table-row
-					margin = "0pt"
-					padding = "0pt"
-					border = "solid yellow 0pt"
-					height="0.6mm" >
-				<fo:table-cell
-						display-align = "center"
-						number-columns-spanned = "11"
-						font-size = "{$split.font.size}"
-					><fo:block
-							text-align = "center"
-						><xsl:text>&#xA0;</xsl:text
-					></fo:block
-				></fo:table-cell>
-			</fo:table-row-->
 		</fo:table-body>
 	</fo:table
 ></xsl:template>
@@ -281,6 +368,7 @@
 			font-size = "{$category.font.size}"
 			text-align = "center"
 			padding-top = "0pt"
+			margin-top = "18pt"
 			border = "0pt solid green"
 			keep-with-next = "always"
 		><xsl:value-of select="BGChessCategoryName"
@@ -289,9 +377,12 @@
 		/><xsl:text>.xx&#xA0;)</xsl:text
 	></fo:block
 	><fo:block
-			margin-bottom = "18pt"
-			keep-together.within-page = "always"
-		><xsl:apply-templates select = "BGChessCategoryBlock"
+			margin-top = "12pt"
+			margin-bottom = "12pt"
+		><xsl:if test="../@paginate='yes'"
+			><xsl:attribute name="break-after">page</xsl:attribute
+		></xsl:if
+		><xsl:apply-templates select = "BGChessCategoryBlock|BGChessCategoryBreak"
 	/></fo:block
 ></xsl:template>
 

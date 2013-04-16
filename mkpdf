@@ -6,21 +6,62 @@ TMPDIR="tmp"
 
 
 mk_pdf() {
+	local	DIR;
 	local	NAME;
+	local	LABEL;
+	local	SRCNAME;
 	local	FONAME;
+	local	OUTNAME;
 
-	NAME="$1"
-	SRCNAME="${SRCDIR}/${NAME}.xml"
-	FONAME="${TMPDIR}/${NAME}.fo"
-	OUTNAME="${OUTDIR}/${NAME}.pdf"
+	DIR="$1"
+	NAME="$2"
+	LABEL="$3"
+
+	SRCNAME="${SRCDIR}/${DIR}/${NAME}.xml"
+	FONAME="${TMPDIR}/${DIR}-${NAME}.fo"
+	OUTNAME="${OUTDIR}/${DIR}-${NAME}.pdf"
 
 	mkdir -p ${TMPDIR}
 	mkdir -p ${OUTDIR}
 
-	fop -xsl BGChess.xsl -xml ${SRCNAME} -foout ${FONAME} &&
-	fop -c ./fop.xconf -fo ${FONAME} -pdf ${OUTNAME}
+	if [ -f ${SRCNAME} ] ; then
+		echo "fop -xsl BGChess.xsl -param bg.label \"${LABEL}\" -xml ${SRCNAME} -foout ${FONAME}"
+		fop -xsl BGChess.xsl -param bg.label "${LABEL}" -xml ${SRCNAME} -foout ${FONAME} &&
+		fop -c ./fop.xconf -fo ${FONAME} -pdf ${OUTNAME}
+	else
+		echo "Src file '${SRCNAME}' not found!"
+	fi
 }
 
 #mk_pdf BGM12KP200
 #mk_pdf BGK12
-mk_pdf BG12Zhuk
+
+#BG12ZH="«Бегущий Город Жуковский - Раменское 2о12» — 7 июля 2о12 года"
+BG12VN="«Бегущий Город Великий Новгород 2о12» — 8 сентября 2о12 года"
+BG12KI="«Бегущий Город Киров 2о12» — 29 сентября 2о12 года"
+BG12EK="«Бегущий Город Екатеринбург 2о12» — 23 сентября 2о12 года"
+BG12SP="«Бегущий Город 2о12» — 27 октября 2о12 года"
+BG13MS="«Бегущий Город Москва 2о13» — 20 апреля 2о13 года"
+
+#for i in 10 30 70 80 90 xx ; do
+#	mk_pdf BG12Zhuk KP${i}-split "${BG12ZH}"
+#	mk_pdf BG12Zhuk KP${i}-unite "${BG12ZH}"
+#done
+#
+#for i in 510 520 ; do
+#	mk_pdf BG12Zhuk KP${i} "${BG12ZH}"
+#done
+
+#mk_pdf BG12Novg KPxx-split "${BG12VN}"
+#mk_pdf BG12Novg KPxx-unite "${BG12VN}"
+
+#mk_pdf BG12Kir KPxx-split "${BG12KI}"
+#mk_pdf BG12Kir KPxx-unite "${BG12KI}"
+
+#mk_pdf BG12Ekb KPxx-split "${BG12EK}"
+#mk_pdf BG12Ekb KPxx-unite "${BG12EK}"
+
+#mk_pdf BG12Spb KPxx-split "${BG12SP}"
+#mk_pdf BG12Spb KPxx-unite "${BG12SP}"
+
+mk_pdf BG13Msk KPxx-split "${BG13MS}"

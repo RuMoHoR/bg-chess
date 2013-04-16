@@ -1,6 +1,8 @@
 <!ENTITY nbsp "&#160;">
 
 <!ELEMENT BGChess ( BGChessCategory+ )>
+<!ATTLIST BGChess KP CDATA #IMPLIED>
+<!ATTLIST BGChess paginate ( yes | no ) #IMPLIED>
 
 <!ELEMENT BGChessCategory ( BGChessCategoryName, BGChessCategoryBlock )>
 <!ATTLIST BGChessCategory Prefix CDATA #REQUIRED>
@@ -8,3 +10,4 @@
 <!ELEMENT BGChessCategoryName ( #PCDATA )>
 
 <!ELEMENT BGChessCategoryBlock EMPTY >
+<!ELEMENT BGChessCategoryBreak EMPTY >
