@@ -39,6 +39,7 @@ mk_pdf() {
 BG12VN="«Бегущий Город Великий Новгород 2о12» — 8 сентября 2о12 года"
 BG12KI="«Бегущий Город Киров 2о12» — 29 сентября 2о12 года"
 BG12EK="«Бегущий Город Екатеринбург 2о12» — 23 сентября 2о12 года"
+BG12SP="«Бегущий Город 2о12» — 27 октября 2о12 года"
 
 #for i in 10 30 70 80 90 xx ; do
 #	mk_pdf BG12Zhuk KP${i}-split "${BG12ZH}"
@@ -52,8 +53,11 @@ BG12EK="«Бегущий Город Екатеринбург 2о12» — 23 се
 #mk_pdf BG12Novg KPxx-split "${BG12VN}"
 #mk_pdf BG12Novg KPxx-unite "${BG12VN}"
 
-mk_pdf BG12Kir KPxx-split "${BG12KI}"
-mk_pdf BG12Kir KPxx-unite "${BG12KI}"
+#mk_pdf BG12Kir KPxx-split "${BG12KI}"
+#mk_pdf BG12Kir KPxx-unite "${BG12KI}"
 
-mk_pdf BG12Ekb KPxx-split "${BG12EK}"
-mk_pdf BG12Ekb KPxx-unite "${BG12EK}"
+#mk_pdf BG12Ekb KPxx-split "${BG12EK}"
+#mk_pdf BG12Ekb KPxx-unite "${BG12EK}"
+
+mk_pdf BG12Spb KPxx-split "${BG12SP}"
+#mk_pdf BG12Spb KPxx-unite "${BG12SP}"

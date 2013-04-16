@@ -27,11 +27,11 @@
 	<xsl:param name="footer.font.size"	select="'10pt'"/>
 
 	<xsl:param name="category.font.name"	select="'DejaVuSans'" />
-	<xsl:param name="category.font.size"	select="'18pt'"/>
+	<xsl:param name="category.font.size"	select="'14pt'"/>
 
 	<xsl:param name="item.font.name"	select="'DejaVuSans'" />
-	<xsl:param name="item.font.size"	select="'10pt'"/>
-	<xsl:param name="split.font.size"	select="'6pt'"/>
+	<xsl:param name="item.font.size"	select="'9.5pt'"/>
+	<xsl:param name="split.font.size"	select="'5pt'"/>
 
 
 <xsl:attribute-set	name		= "pagesize">
@@ -316,6 +316,7 @@
 			width = "100%"
 			border-collapse = "collapse"
 			border = "solid black 0pt"
+			keep-together.within-page = "always"
 		><fo:table-column column-width="proportional-column-width(20)" />
 		<fo:table-column column-width="proportional-column-width(20)" />
 		<fo:table-column column-width="proportional-column-width(20)" />
@@ -360,7 +361,6 @@
 	><fo:block
 			margin-top = "12pt"
 			margin-bottom = "12pt"
-			keep-together.within-page = "always"
 		><xsl:if test="../@paginate='yes'"
 			><xsl:attribute name="break-after">page</xsl:attribute
 		></xsl:if
