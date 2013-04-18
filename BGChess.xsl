@@ -309,9 +309,27 @@
 	</fo:table-row>
 </xsl:template>
 
+<xsl:template match="BGChessCategoryBreak"
+	><fo:block
+			page-break-before="always"
+			font-family = "{$category.font.name}"
+			font-size = "{$category.font.size}"
+			text-align = "center"
+			padding-top = "0pt"
+			margin-top = "18pt"
+			margin-bottom = "12pt"
+			border = "0pt solid green"
+			keep-with-next = "always"
+		><xsl:value-of select="../BGChessCategoryName"
+		/><xsl:text>&#xA0;(&#xA0;</xsl:text
+		><xsl:value-of select="../@Prefix"
+		/><xsl:text>.xx&#xA0;)</xsl:text
+	></fo:block
+></xsl:template>
+
 <xsl:template match="BGChessCategoryBlock"
 	><fo:table
-			margin-bottom = "9pt"
+			margin-bottom = "10pt"
 			table-layout = "fixed"
 			width = "100%"
 			border-collapse = "collapse"
@@ -364,7 +382,7 @@
 		><xsl:if test="../@paginate='yes'"
 			><xsl:attribute name="break-after">page</xsl:attribute
 		></xsl:if
-		><xsl:apply-templates select = "BGChessCategoryBlock"
+		><xsl:apply-templates select = "BGChessCategoryBlock|BGChessCategoryBreak"
 	/></fo:block
 ></xsl:template>
 

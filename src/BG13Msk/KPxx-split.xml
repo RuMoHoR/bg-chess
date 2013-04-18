@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE BGChess SYSTEM "../../BGChess.dtd">
+<BGChess paginate="yes">
+
+	<BGChessCategory Prefix="1" >
+		<BGChessCategoryName>Ангел</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="2" >
+		<BGChessCategoryName>Атлант</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="L6" >
+		<BGChessCategoryName>Броневик-Лайт</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="P6" >
+		<BGChessCategoryName>Броневик-Про</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="L3" >
+		<BGChessCategoryName>Всадник-Лайт</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="M3" >
+		<BGChessCategoryName>Всадник-Мидл</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="P3" >
+		<BGChessCategoryName>Всадник-Про</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="L8" >
+		<BGChessCategoryName>Грифон-Лайт</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="P8" >
+		<BGChessCategoryName>Грифон-Про</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="L4" >
+		<BGChessCategoryName>Лев-Лайт</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBreak />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="P4" >
+		<BGChessCategoryName>Лев-Про</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBreak />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="X4" >
+		<BGChessCategoryName>Лев-Экстра</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBreak />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="L5" >
+		<BGChessCategoryName>Роллер/Химера-Лайт</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="P5" >
+		<BGChessCategoryName>Роллер/Химера-Про</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="L7" >
+		<BGChessCategoryName>Сфинкс-Лайт</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="M7" >
+		<BGChessCategoryName>Сфинкс-Мидл</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="P7" >
+		<BGChessCategoryName>Сфинкс-Про</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+</BGChess>

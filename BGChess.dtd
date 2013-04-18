@@ -10,3 +10,4 @@
 <!ELEMENT BGChessCategoryName ( #PCDATA )>
 
 <!ELEMENT BGChessCategoryBlock EMPTY >
+<!ELEMENT BGChessCategoryBreak EMPTY >
