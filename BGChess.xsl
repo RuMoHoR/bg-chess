@@ -348,15 +348,15 @@
 		<fo:table-column column-width="proportional-column-width(20)" />
 		<fo:table-body>
 			<xsl:call-template name="BGChessCategoryBlockRow" >
-				<xsl:with-param name="row" select="3 * position() - 3" />
+				<xsl:with-param name="row" select="3 * ( position() - count( preceding-sibling::BGChessCategoryBreak ) ) - 3" />
 			</xsl:call-template >
 			<xsl:call-template name="BGChessCategoryBlockRowSplit" />
 			<xsl:call-template name="BGChessCategoryBlockRow" >
-				<xsl:with-param name="row" select="3 * position() - 2" />
+				<xsl:with-param name="row" select="3 * ( position() - count( preceding-sibling::BGChessCategoryBreak ) ) - 2" />
 			</xsl:call-template >
 			<xsl:call-template name="BGChessCategoryBlockRowSplit" />
 			<xsl:call-template name="BGChessCategoryBlockRow" >
-				<xsl:with-param name="row" select="3 * position() - 1" />
+				<xsl:with-param name="row" select="3 * ( position() - count( preceding-sibling::BGChessCategoryBreak ) ) - 1" />
 			</xsl:call-template >
 		</fo:table-body>
 	</fo:table
