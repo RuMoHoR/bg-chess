@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE BGChess SYSTEM "../../BGChess.dtd">
+<BGChess paginate="yes">
+
+	<BGChessCategory Prefix="1" >
+		<BGChessCategoryName>Ангел</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="6" >
+		<BGChessCategoryName>Броневик</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="3" >
+		<BGChessCategoryName>Всадник</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="8" >
+		<BGChessCategoryName>Грифон</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="L4" >
+		<BGChessCategoryName>Лев-Лайт</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="P4" >
+		<BGChessCategoryName>Лев-Про</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="7" >
+		<BGChessCategoryName>Сфинкс</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+	<BGChessCategory Prefix="5" >
+		<BGChessCategoryName>Химера</BGChessCategoryName>
+		<BGChessCategoryBlock />
+		<BGChessCategoryBlock />
+	</BGChessCategory>
+
+</BGChess>
